@@ -119,10 +119,15 @@ class DrinkConfirmationDialog:
         if self.timer_id:
             self.dialog.after_cancel(self.timer_id)
 
-        print(f"Confirmed! Dispatching to DrinkDispenser for '{self.recipe.name}'")
-        DrinkDispenser.make_drink(self.recipe, self.glass_size)
+        print(f"Confirmed! Launching progress view for '{self.recipe.name}'")
 
-        if self.on_complete:
-            self.on_complete()
+        # Import and launch the progress bar window
+        from ui.pouring_progress_dialog import PouringProgressDialog
+        PouringProgressDialog(
+            self.parent,
+            self.recipe,
+            self.glass_size,
+            on_complete=self.on_complete
+        )
 
         self.dialog.destroy()

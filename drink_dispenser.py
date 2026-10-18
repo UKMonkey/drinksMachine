@@ -4,24 +4,23 @@ import time
 class DrinkDispenser:
 
     @classmethod
-    def make_drink(cls, recipe, glass_size):
-        """
-        Stub method to handle hardware dispensing logic.
-        Communicates with pumps based on recipe ingredients, quantities,
-        and glass size multipliers.
-        """
-        multiplier = glass_size.get("multiplier", 1.0)
+    def make_drink(cls, recipe, glass_size, progress_callback=None):
         print("========================================")
         print(f"DISPENSER: Starting to pour '{recipe.name}' into '{glass_size['name']}'")
-        print(f"Volume Multiplier: {multiplier}x")
 
         for ingredient in recipe.ingredients:
-            scaled_amount = ingredient.amount_ml * multiplier
-            print(f" -> Pumping {scaled_amount:.1f} ml of '{ingredient.name}'")
+            print(f" -> Pumping {ingredient.amount_ml:.1f} ml of '{ingredient.name}'")
 
-        time.sleep(30)
+        print("DISPENSER: Dispensing in progress...")
+
+        total_steps = 5  # 30 seconds simulation
+        for step in range(total_steps + 1):
+            percent = int((step / total_steps) * 100)
+            if progress_callback:
+                progress_callback(percent)
+
+            if step < total_steps:
+                time.sleep(1)
 
         print("DISPENSER: Pour complete successfully!")
         print("========================================")
-
-        # TODO: Add real hardware GPIO / motor controller triggers here
