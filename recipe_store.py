@@ -9,13 +9,13 @@ class RecipeStore:
     @classmethod
     def get_recipe_file_path(cls) -> Path:
         # Check home directory first (where updates are copied), fallback to local data if needed
-        home_path = Path.home() / "drinksMachine" / "data" / "drinksRecipes.txt"
+        home_path = Path.home() / "drinksMachine" / "data" / "drinksRecipes.json"
         if home_path.exists():
             return home_path
 
         # Fallback to local project data directory
         base_dir = Path(__file__).resolve().parent
-        return base_dir / "data" / "drinksRecipes.txt"
+        return base_dir / "data" / "drinksRecipes.json"
 
     @classmethod
     def load(cls):

@@ -76,7 +76,7 @@ class DrinksMachineApp:
         ConfigurePumpsDialog(self.root)
 
     def update_recipes(self):
-        RecipeUpdateWindow(self.root)
+        RecipeUpdateDialog(self.root)
 
     def make_drinks(self):
         # Whenever you need recipes elsewhere, just call:

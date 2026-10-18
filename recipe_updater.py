@@ -4,7 +4,7 @@ from pathlib import Path
 
 class RecipeUpdater:
 
-    RECIPE_FILENAME = "drinksRecipes.txt"
+    RECIPE_FILENAME = "drinksRecipes.json"
 
     def update(self):
         destination_dir = Path.home() / "drinksMachine" / "data"
