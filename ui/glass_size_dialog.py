@@ -1,4 +1,5 @@
 import tkinter as tk
+from glass_size_store import GlassSizeStore
 
 
 class GlassSizeDialog:
@@ -80,15 +81,23 @@ class GlassSizeDialog:
         self.dialog.destroy()
 
     def populate_sizes(self):
-        sizes = [
-            {"name": "Standard Glass (250ml)", "multiplier": 1.0, "capacity_ml": 250},
-            {"name": "Large Glass (400ml)", "multiplier": 1.6, "capacity_ml": 400},
-        ]
+        sizes = GlassSizeStore.get_glass_sizes()
+
+        if not sizes:
+            lbl = tk.Label(
+                self.scrollable_frame,
+                text="No glass sizes found in configuration.",
+                font=("Arial", 18),
+                bg="#ffffff",
+                fg="#666666",
+            )
+            lbl.pack(pady=40, padx=20)
+            return
 
         for size_info in sizes:
             btn = tk.Button(
                 self.scrollable_frame,
-                text=size_info["name"],
+                text=size_info.get("name", "Unknown Glass"),
                 font=("Arial", 24),
                 bg="#e0e0e0",
                 activebackground="#d0d0d0",
