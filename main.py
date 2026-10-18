@@ -1,6 +1,8 @@
 import tkinter as tk
 
-from recipe_update_window import RecipeUpdateWindow
+from ui.recipe_update_dialogue import RecipeUpdateDialog
+from ui.configure_pumps_dialogue import ConfigurePumpsDialog
+
 from recipe_store import RecipeStore
 
 
@@ -71,7 +73,7 @@ class DrinksMachineApp:
         btn_settings.grid(row=1, column=1, sticky="nsew", padx=10, pady=10)
 
     def configure_drinks(self):
-        print("Configure drinks clicked")
+        ConfigurePumpsDialog(self.root)
 
     def update_recipes(self):
         RecipeUpdateWindow(self.root)

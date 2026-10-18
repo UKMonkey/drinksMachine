@@ -3,7 +3,7 @@ from recipe_updater import RecipeUpdater
 from recipe_store import RecipeStore
 
 
-class RecipeUpdateWindow:
+class RecipeUpdateDialog:
 
     def __init__(self, parent):
         self.parent = parent
