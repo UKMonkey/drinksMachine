@@ -1,0 +1,105 @@
+Vodka Coke,vodka,50,ml,cola,0.5,UK pint
+Rum and Coke,dark rum,50,ml,cola,0.5,UK pint
+Gin and Tonic,gin,50,ml,tonic water,150,ml
+Screwdriver,vodka,50,ml,orange juice,150,ml
+Whisky Highball,whisky,50,ml,soda water,150,ml
+Cuba Libre,white rum,50,ml,cola,0.5,UK pint,lime juice,10,ml
+Vodka Cranberry,vodka,50,ml,cranberry juice,150,ml
+Vodka Lemonade,vodka,50,ml,lemonade,150,ml
+Rum Punch,dark rum,50,ml,orange juice,100,ml,pineapple juice,100,ml
+Sea Breeze,vodka,50,ml,cranberry juice,100,ml,grapefruit juice,100,ml
+Cape Codder,vodka,50,ml,cranberry juice,150,ml
+Greyhound,gin,50,ml,grapefruit juice,150,ml
+Salty Dog,gin,50,ml,grapefruit juice,150,ml
+Moscow Mule,vodka,50,ml,ginger beer,150,ml,lime juice,15,ml
+Dark and Stormy,dark rum,50,ml,ginger beer,150,ml,lime juice,15,ml
+Gin Buck,gin,50,ml,ginger ale,150,ml
+Whisky Ginger,whisky,50,ml,ginger ale,150,ml
+Rum Ginger,dark rum,50,ml,ginger ale,150,ml
+Tequila Sunrise,tequila,50,ml,orange juice,150,ml,grenadine,15,ml
+Paloma,tequila,50,ml,grapefruit juice,150,ml,soda water,50,ml
+Tom Collins,gin,50,ml,lemon juice,25,ml,sugar syrup,15,ml,soda water,120,ml
+John Collins,whisky,50,ml,lemon juice,25,ml,sugar syrup,15,ml,soda water,120,ml
+Vodka Collins,vodka,50,ml,lemon juice,25,ml,sugar syrup,15,ml,soda water,120,ml
+Gin Fizz,gin,50,ml,lemon juice,25,ml,sugar syrup,15,ml,soda water,100,ml
+Whisky Sour,whisky,50,ml,lemon juice,25,ml,sugar syrup,15,ml
+Vodka Sour,vodka,50,ml,lemon juice,25,ml,sugar syrup,15,ml
+Tequila Sour,tequila,50,ml,lemon juice,25,ml,sugar syrup,15,ml
+Rum Sour,white rum,50,ml,lime juice,25,ml,sugar syrup,15,ml
+Lemon Drop,vodka,50,ml,lemon juice,25,ml,sugar syrup,15,ml
+Kamikaze,vodka,25,ml,triple sec,25,ml,lime juice,25,ml
+Margarita,tequila,50,ml,triple sec,25,ml,lime juice,25,ml
+White Lady,gin,50,ml,triple sec,25,ml,lemon juice,25,ml
+Sidecar,brandy,50,ml,triple sec,25,ml,lemon juice,25,ml
+Cosmopolitan,vodka,40,ml,triple sec,20,ml,cranberry juice,30,ml,lime juice,10,ml
+Long Island Iced Tea,vodka,15,ml,light rum,15,ml,gin,15,ml,tequila,15,ml,triple sec,15,ml,cola,0.5,UK pint
+Tokyo Tea,vodka,15,ml,light rum,15,ml,gin,15,ml,tequila,15,ml,melon liqueur,15,ml,lemonade,0.5,UK pint
+Adios Motherfucker,vodka,15,ml,light rum,15,ml,gin,15,ml,tequila,15,ml,blue curacao,15,ml,lemonade,0.5,UK pint
+Blue Lagoon,vodka,50,ml,blue curacao,25,ml,lemonade,150,ml
+Electric Lemonade,vodka,50,ml,blue curacao,25,ml,lemonade,150,ml
+Sex on the Beach,vodka,50,ml,peach schnapps,25,ml,orange juice,75,ml,cranberry juice,75,ml
+Woo Woo,vodka,50,ml,peach schnapps,25,ml,cranberry juice,150,ml
+Fuzzy Navel,peach schnapps,50,ml,orange juice,150,ml
+Harvey Wallbanger,vodka,50,ml,orange juice,150,ml,galliano,15,ml
+Bay Breeze,vodka,50,ml,cranberry juice,75,ml,pineapple juice,75,ml
+Madras,vodka,50,ml,cranberry juice,75,ml,orange juice,75,ml
+Malibu Coke,malibu,50,ml,cola,0.5,UK pint
+Malibu Pineapple,malibu,50,ml,pineapple juice,150,ml
+Malibu Orange,malibu,50,ml,orange juice,150,ml
+Pina Colada,white rum,50,ml,coconut cream,50,ml,pineapple juice,150,ml
+Painkiller,dark rum,50,ml,pineapple juice,100,ml,orange juice,50,ml,coconut cream,30,ml
+Mai Tai,light rum,30,ml,dark rum,30,ml,triple sec,20,ml,lime juice,20,ml
+Zombie,dark rum,30,ml,light rum,30,ml,pineapple juice,100,ml,orange juice,50,ml,grenadine,10,ml
+Planters Punch,dark rum,50,ml,orange juice,75,ml,pineapple juice,75,ml
+Hurricane,dark rum,60,ml,orange juice,60,ml,passion fruit juice,60,ml
+Bahama Mama,dark rum,30,ml,malibu,30,ml,pineapple juice,100,ml,orange juice,50,ml
+Caipirinha,cachaca,60,ml,lime juice,25,ml,sugar syrup,15,ml
+Daiquiri,white rum,50,ml,lime juice,25,ml,sugar syrup,15,ml
+Strawberry Daiquiri,white rum,50,ml,lime juice,25,ml,strawberry puree,50,ml
+Mojito,white rum,50,ml,lime juice,25,ml,sugar syrup,15,ml,soda water,100,ml
+Mint Cooler,lemon juice,25,ml,sugar syrup,15,ml,soda water,150,ml
+Gin Cooler,gin,50,ml,lime juice,20,ml,soda water,150,ml
+Tequila Cooler,tequila,50,ml,lime juice,20,ml,soda water,150,ml
+Rum Cooler,rum,50,ml,lime juice,20,ml,soda water,150,ml
+Vodka Cooler,vodka,50,ml,lime juice,20,ml,soda water,150,ml
+Orange Crush,vodka,50,ml,orange juice,150,ml,soda water,50,ml
+Lemon Splash,vodka,50,ml,lemonade,200,ml
+Pink Lemonade,vodka,50,ml,cranberry juice,50,ml,lemonade,150,ml
+Cherry Cola,vodka,50,ml,cherry syrup,20,ml,cola,0.5,UK pint
+Vanilla Cola,vanilla vodka,50,ml,cola,0.5,UK pint
+Spiced Rum Cola,spiced rum,50,ml,cola,0.5,UK pint
+Irish Buck,irish whiskey,50,ml,ginger ale,150,ml
+Kentucky Mule,bourbon,50,ml,ginger beer,150,ml,lime juice,15,ml
+American Collins,bourbon,50,ml,lemon juice,25,ml,sugar syrup,15,ml,soda water,120,ml
+Southern Tea,bourbon,50,ml,lemonade,150,ml
+Bourbon Coke,bourbon,50,ml,cola,0.5,UK pint
+Tennessee Cola,tennessee whiskey,50,ml,cola,0.5,UK pint
+Apple Whisky,whisky,50,ml,apple juice,150,ml
+Apple Rum,dark rum,50,ml,apple juice,150,ml
+Apple Vodka,vodka,50,ml,apple juice,150,ml
+Peach Cooler,peach schnapps,50,ml,lemonade,150,ml
+Blue Breeze,vodka,50,ml,blue curacao,25,ml,cranberry juice,150,ml
+Green Lagoon,vodka,50,ml,melon liqueur,25,ml,lemonade,150,ml
+Sunset Punch,rum,50,ml,orange juice,100,ml,pineapple juice,100,ml
+Island Breeze,malibu,50,ml,pineapple juice,100,ml,cranberry juice,100,ml
+Tropical Cooler,white rum,50,ml,mango juice,100,ml,pineapple juice,100,ml
+Mango Mule,vodka,50,ml,mango juice,100,ml,ginger beer,100,ml
+Passion Cooler,vodka,50,ml,passion fruit juice,150,ml
+Passion Sunrise,tequila,50,ml,passion fruit juice,100,ml,orange juice,100,ml
+Berry Collins,gin,50,ml,berry syrup,20,ml,soda water,150,ml
+Berry Vodka,vodka,50,ml,berry syrup,20,ml,lemonade,150,ml
+Cranberry Fizz,vodka,50,ml,cranberry juice,100,ml,soda water,100,ml
+Pineapple Fizz,rum,50,ml,pineapple juice,100,ml,soda water,100,ml
+Orange Fizz,gin,50,ml,orange juice,100,ml,soda water,100,ml
+Summer Punch,vodka,50,ml,orange juice,75,ml,cranberry juice,75,ml,lemonade,50,ml
+Winter Punch,spiced rum,50,ml,apple juice,100,ml,orange juice,100,ml
+Golden Sunset,tequila,50,ml,orange juice,150,ml
+Ruby Cooler,vodka,50,ml,cranberry juice,150,ml
+White Russian,vodka,50,ml,coffee liqueur,25,ml,milk,50,ml
+Black Russian,vodka,50,ml,coffee liqueur,25,ml
+Coffee Cooler,vodka,50,ml,coffee liqueur,25,ml,milk,100,ml
+Cream Soda Vodka,vodka,50,ml,cream soda,150,ml
+Lime Rickey,gin,50,ml,lime juice,25,ml,soda water,150,ml
+Citrus Blast,vodka,50,ml,orange juice,75,ml,grapefruit juice,75,ml
+Triple Citrus,gin,50,ml,orange juice,50,ml,grapefruit juice,50,ml,lemon juice,25,ml
+
