@@ -6,6 +6,7 @@ class GlassSizeDialog:
     def __init__(self, parent, on_size_selected):
         self.parent = parent
         self.on_size_selected = on_size_selected
+        self.timer_id = None
 
         self.dialog = tk.Toplevel(parent)
         self.dialog.attributes("-fullscreen", True)
@@ -29,12 +30,12 @@ class GlassSizeDialog:
             text="Cancel",
             font=("Arial", 20, "bold"),
             bg="#f8d7da",
-            command=self.dialog.destroy,
+            command=self.cancel_and_close,
             height=2,
         )
         btn_back.pack(side=tk.BOTTOM, fill=tk.X, padx=20, pady=20)
 
-        # Create a scrollable container frame for touch devices (handles many options smoothly)
+        # Create a scrollable container frame for touch devices
         container = tk.Frame(self.dialog, bg="#f0f0f0")
         container.pack(fill=tk.BOTH, expand=True, padx=20, pady=10)
 
@@ -59,17 +60,39 @@ class GlassSizeDialog:
         canvas.bind("<ButtonPress-1>", lambda event: canvas.scan_mark(event.x, event.y))
         canvas.bind("<B1-Motion>", lambda event: canvas.scan_dragto(event.x, event.y, gain=1))
 
-        # Populate hard-coded sizes (easily expandable for many options)
+        # Reset timeout on any user interaction across the dialog window
+        self.dialog.bind("<Any-ButtonPress>", self.reset_timeout)
+        self.dialog.bind("<Any-KeyPress>", self.reset_timeout)
+
+        # Populate hard-coded sizes
         self.populate_sizes()
 
+        # Start the initial 60-second timeout countdown (60000 ms)
+        self.reset_timeout()
+
+    def reset_timeout(self, event=None):
+        """Resets the 60-second auto-cancel inactivity timer."""
+        if self.timer_id:
+            self.dialog.after_cancel(self.timer_id)
+
+        # 60,000 milliseconds = 60 seconds
+        self.timer_id = self.dialog.after(60000, self.auto_cancel)
+
+    def auto_cancel(self):
+        """Called automatically when the 60-second timeout expires."""
+        print("GlassSizeDialog: Timed out due to inactivity, auto-canceling.")
+        self.dialog.destroy()
+
+    def cancel_and_close(self):
+        """Manual cancel via button click."""
+        if self.timer_id:
+            self.dialog.after_cancel(self.timer_id)
+        self.dialog.destroy()
+
     def populate_sizes(self):
-        # Hard-coded options for now, but built dynamically to support many options
         sizes = [
             {"name": "Standard Glass (250ml)", "multiplier": 1.0},
             {"name": "Large Glass (400ml)", "multiplier": 1.6},
-            # You can easily add more sizes here later and the scrollable view will handle them automatically:
-            # {"name": "Small Glass (150ml)", "multiplier": 0.6},
-            # {"name": "Pint Glass (568ml)", "multiplier": 2.27},
         ]
 
         for size_info in sizes:
@@ -87,6 +110,8 @@ class GlassSizeDialog:
             btn.pack(fill=tk.X, padx=10, pady=8)
 
     def select_size(self, size_info):
+        if self.timer_id:
+            self.dialog.after_cancel(self.timer_id)
         print(f"Glass size selected: {size_info['name']}")
         if self.on_size_selected:
             self.on_size_selected(size_info)
