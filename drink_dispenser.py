@@ -1,3 +1,6 @@
+import time
+
+
 class DrinkDispenser:
 
     @classmethod
@@ -13,8 +16,10 @@ class DrinkDispenser:
         print(f"Volume Multiplier: {multiplier}x")
 
         for ingredient in recipe.ingredients:
-            scaled_amount = ingredient.amount * multiplier
+            scaled_amount = ingredient.amount_ml * multiplier
             print(f" -> Pumping {scaled_amount:.1f} ml of '{ingredient.name}'")
+
+        time.sleep(30)
 
         print("DISPENSER: Pour complete successfully!")
         print("========================================")
