@@ -1,6 +1,7 @@
 import tkinter as tk
 from recipe_store import RecipeStore
 from pump_store import PumpStore
+from ui.drink_confirmation_dialog import DrinkConfirmationDialog
 
 
 class SelectDrinkDialog:
@@ -168,6 +169,11 @@ class SelectDrinkDialog:
         if self.timer_id:
             self.dialog.after_cancel(self.timer_id)
         print(f"Drink selected: {recipe.name} with glass size {self.glass_size['name']}")
-        if self.on_drink_selected:
-            self.on_drink_selected(recipe, self.glass_size)
+
+        DrinkConfirmationDialog(
+            self.parent,
+            recipe,
+            self.glass_size,
+            on_complete=self.dialog.destroy
+        )
         self.dialog.destroy()
