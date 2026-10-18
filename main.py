@@ -5,6 +5,7 @@ from recipe_updater import RecipeUpdater
 from recipe_loader import RecipeLoader
 
 from pathlib import Path
+from ui.recipe_update_dialogue import RecipeUpdateWindow
 BASE_DIR = Path(__file__).resolve().parent
 recipe_directory = BASE_DIR / "data"
 
@@ -76,23 +77,7 @@ class DrinksMachineApp:
         print("Configure drinks clicked")
 
     def update_recipes(self):
-        try:
-            updater = RecipeUpdater()
-            source, destination = updater.update()
-            StatusDialog.show(
-                self.root,
-                f"Recipes updated successfully\n\n{destination}",
-                "#d1e7dd",
-            )
-
-        except Exception as ex:
-            print(f"Recipe update failed: {ex}")
-
-            StatusDialog.show(
-                self.root,
-                f"Recipe update failed\n\n{ex}",
-                "#f8d7da",
-            )
+        RecipeUpdateWindow(self.root)
 
     def load_recipies(self):
         loader = RecipeLoader()
