@@ -103,28 +103,24 @@ class SelectDrinkDialog:
             lbl.pack(pady=40, padx=20)
             return
 
-        # Pre-process availability and volume metrics for sorting and status lights
         drink_items = []
         glass_capacity = self.glass_size.get("capacity_ml", 250)
-        multiplier = self.glass_size.get("multiplier", 1.0)
 
         for recipe in recipes:
             recipe_ingredients = {ing.name.lower() for ing in recipe.ingredients}
             is_available = recipe_ingredients.issubset(normalized_loaded)
 
-            # Calculate total drink volume in ml scaled by glass size multiplier
-            total_volume_ml = sum(ing.amount_ml for ing in recipe.ingredients) * multiplier
+            # Re-calculating size volume check if capacity metric is available
+            total_volume_ml = sum(ing.amount_ml for ing in recipe.ingredients)
             exceeds_90_percent = total_volume_ml > (glass_capacity * 0.9)
 
             drink_items.append({
                 "recipe": recipe,
                 "is_available": is_available,
-                "exceeds_90_percent": exceeds_90_percent,
-                "total_volume_ml": total_volume_ml
+                "exceeds_90_percent": exceeds_90_percent
             })
 
-        # Sort: 1. Availability first (True available comes before False unavailable)
-        #       2. Alphabetically by recipe name
+        # Sort by availability first, then alphabetically by name
         drink_items.sort(key=lambda x: (not x["is_available"], x["recipe"].name.lower()))
 
         for item in drink_items:
@@ -132,42 +128,49 @@ class SelectDrinkDialog:
             is_available = item["is_available"]
             exceeds_90_percent = item["exceeds_90_percent"]
 
+            # Determine fill color based on rules
+            if not is_available:
+                fill_color = "#dc3545"  # Red (Missing ingredients)
+            elif exceeds_90_percent:
+                fill_color = "#ffc107"  # Amber (Exceeds 90% capacity)
+            else:
+                fill_color = "#28a745"  # Green (Valid and fits)
+
             row_frame = tk.Frame(self.scrollable_frame, bg="#ffffff")
             row_frame.pack(fill=tk.X, padx=10, pady=6)
 
+            # If red or amber, we bypass selection action entirely by passing a no-op command,
+            # or handling it gracefully inside select_drink.
             btn = tk.Button(
                 row_frame,
                 text=recipe.name,
                 font=("Arial", 22),
-                bg="#e0e0e0" if is_available else "#f5f5f5",
-                fg="#000000" if is_available else "#aaaaaa",
+                bg="#e0e0e0" if is_available and not exceeds_90_percent else "#f5f5f5",
+                fg="#000000" if is_available and not exceeds_90_percent else "#888888",
                 activebackground="#d0d0d0",
                 anchor="w",
                 padx=20,
                 pady=15,
-                command=lambda r=recipe: self.select_drink(r),
+                command=lambda r=recipe, avail=is_available, warn=exceeds_90_percent: self.select_drink(r, avail, warn),
             )
             btn.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 10))
 
-            # Indicator Light logic:
-            # - Red if unavailable
-            # - Amber if available but exceeds 90% of glass capacity
-            # - Green if available and fits comfortably
             light_canvas = tk.Canvas(row_frame, width=40, height=40, bg="#ffffff", highlightthickness=0)
             light_canvas.pack(side=tk.RIGHT, padx=10)
-
-            if not is_available:
-                fill_color = "#dc3545"  # Red
-            elif exceeds_90_percent:
-                fill_color = "#ffc107"  # Amber / Yellow warning
-            else:
-                fill_color = "#28a745"  # Green
-
             light_canvas.create_oval(8, 8, 32, 32, fill=fill_color, outline="")
 
-    def select_drink(self, recipe):
+    def select_drink(self, recipe, is_available, exceeds_90_percent):
         if self.timer_id:
             self.dialog.after_cancel(self.timer_id)
+
+        # Ignore selection if the drink is Red (unavailable) or Amber (exceeds 90% capacity)
+        if not is_available or exceeds_90_percent:
+            print(
+                f"Ignored selection for '{recipe.name}' (Available: {is_available}, Warning/Amber: {exceeds_90_percent})")
+            # Restart timer and return without doing anything
+            self.reset_timeout()
+            return
+
         print(f"Drink selected: {recipe.name} with glass size {self.glass_size['name']}")
 
         DrinkConfirmationDialog(
