@@ -1,5 +1,6 @@
 import tkinter as tk
 from ui.glass_size_dialog import GlassSizeDialog
+from ui.select_drink_dialog import SelectDrinkDialog
 
 
 class MakeDrinksDialog:
@@ -46,9 +47,14 @@ class MakeDrinksDialog:
         btn_back.grid(row=1, column=0, sticky="s", pady=(0, 40))
 
     def start_new_drink(self):
-        # Open the glass size selection screen
+        # Step 1: Open Glass Size selection and hand it a callback
         GlassSizeDialog(self.dialog, self.on_glass_size_chosen)
 
     def on_glass_size_chosen(self, size_info):
-        print(f"Proceeding with glass size: {size_info['name']}")
-        # Next step: Once the size is picked, we will use this to open the drink selection screen!
+        print(f"Glass size chosen: {size_info['name']}. Opening drink selector...")
+        # Step 2: Once glass size is returned, open the drink selector window
+        SelectDrinkDialog(self.dialog, size_info, self.on_drink_chosen_complete)
+
+    def on_drink_chosen_complete(self, recipe, size_info):
+        print(f"Ready to pour: '{recipe.name}' into '{size_info['name']}' (multiplier: {size_info['multiplier']})")
+        # Step 3: Trigger pump hardware dispensing logic here next!
