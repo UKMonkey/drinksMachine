@@ -1,4 +1,5 @@
 import tkinter as tk
+from ui.glass_size_dialog import GlassSizeDialog
 
 
 class MakeDrinksDialog:
@@ -45,5 +46,9 @@ class MakeDrinksDialog:
         btn_back.grid(row=1, column=0, sticky="s", pady=(0, 40))
 
     def start_new_drink(self):
-        print("New Drink clicked")
-        # Placeholder: Next we can open the drink selection screen here!
+        # Open the glass size selection screen
+        GlassSizeDialog(self.dialog, self.on_glass_size_chosen)
+
+    def on_glass_size_chosen(self, size_info):
+        print(f"Proceeding with glass size: {size_info['name']}")
+        # Next step: Once the size is picked, we will use this to open the drink selection screen!
