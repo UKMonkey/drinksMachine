@@ -1,20 +1,17 @@
 import tkinter as tk
 
-from status_dialog import StatusDialog
-from recipe_updater import RecipeUpdater
-from recipe_loader import RecipeLoader
-
-from pathlib import Path
-from ui.recipe_update_dialogue import RecipeUpdateWindow
-BASE_DIR = Path(__file__).resolve().parent
-recipe_directory = BASE_DIR / "data"
+from recipe_update_window import RecipeUpdateWindow
+from recipe_store import RecipeStore
 
 
 class DrinksMachineApp:
 
     def __init__(self, root):
         self.root = root
-        self.load_recipies()
+
+        # Load recipes globally on startup
+        RecipeStore.load()
+
         self.generate_main_screen()
 
     def generate_main_screen(self):
@@ -79,12 +76,10 @@ class DrinksMachineApp:
     def update_recipes(self):
         RecipeUpdateWindow(self.root)
 
-    def load_recipies(self):
-        loader = RecipeLoader()
-        self.recipes = loader.load(recipe_directory / "drinksRecipes.txt")
-
     def make_drinks(self):
-        print("Make drinks clicked")
+        # Whenever you need recipes elsewhere, just call:
+        recipes = RecipeStore.get_recipes()
+        print(f"Make drinks clicked. Available recipes: {len(recipes)}")
 
     def settings(self):
         print("Settings clicked")
@@ -92,9 +87,7 @@ class DrinksMachineApp:
 
 def main():
     root = tk.Tk()
-
     app = DrinksMachineApp(root)
-
     root.mainloop()
 
 

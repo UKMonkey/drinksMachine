@@ -1,5 +1,6 @@
 import tkinter as tk
 from recipe_updater import RecipeUpdater
+from recipe_store import RecipeStore
 
 
 class RecipeUpdateWindow:
@@ -8,7 +9,7 @@ class RecipeUpdateWindow:
         self.parent = parent
         self.dialog = tk.Toplevel(parent)
 
-        # Make fullscreen and modal (removed overrideredirect to fix the TclError)
+        # Make fullscreen and modal
         self.dialog.attributes("-fullscreen", True)
         self.dialog.transient(parent)
         self.dialog.grab_set()
@@ -34,6 +35,9 @@ class RecipeUpdateWindow:
         try:
             updater = RecipeUpdater()
             source, destination = updater.update()
+
+            # Reload the global recipes after a successful update
+            RecipeStore.load()
 
             message = f"Recipes updated successfully\n\n{destination}"
             bg_colour = "#d1e7dd"  # Success green
