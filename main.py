@@ -2,6 +2,7 @@ import tkinter as tk
 
 from ui.recipe_update_dialogue import RecipeUpdateDialog
 from ui.configure_pumps_dialogue import ConfigurePumpsDialog
+from ui.make_drinks_dialog import MakeDrinksDialog
 
 from recipe_store import RecipeStore
 
@@ -79,9 +80,7 @@ class DrinksMachineApp:
         RecipeUpdateDialog(self.root)
 
     def make_drinks(self):
-        # Whenever you need recipes elsewhere, just call:
-        recipes = RecipeStore.get_recipes()
-        print(f"Make drinks clicked. Available recipes: {len(recipes)}")
+        MakeDrinksDialog(self.root)
 
     def settings(self):
         print("Settings clicked")
